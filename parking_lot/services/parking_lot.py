@@ -2,7 +2,8 @@ from parking_lot.models.floor import Floor
 from parking_lot.models.vehicle import Vehicle
 
 class ParkingLot:
-    def __init__(self, floors: list[Floor]):
+    def __init__(self, name: str, floors: list[Floor]):
+        self.name = name
         self.floors = floors
 
     def park_vehicle(self, vehicle: Vehicle):
