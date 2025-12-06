@@ -18,11 +18,11 @@ class SizeRule(ParkingRule):
 
 class EVRule(ParkingRule):
     def allows(self, vehicle: Vehicle, spot: ParkingSpot):
-        return spot.has_charger and vehicle.is_ev
+        return not vehicle.is_ev or spot.has_charger
 
 class HandicapRule(ParkingRule):
     def allows(self, vehicle: Vehicle, spot: ParkingSpot):
-        return spot.spot_type == SpotType.HANDICAPPED and vehicle.is_handicap
+        return not vehicle.is_handicap or spot.spot_type == SpotType.HANDICAPPED
 
 class ParkingMatcher:
     def __init__(self, rules: list[ParkingRule]):
